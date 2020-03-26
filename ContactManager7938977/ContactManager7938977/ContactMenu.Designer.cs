@@ -1,6 +1,6 @@
 ﻿namespace ContactManager7938977
 {
-    partial class Form1
+    partial class ContactMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // ContactMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ContactMenu";
+            this.Text = "Harris Contact Manager";
             this.ResumeLayout(false);
 
         }
