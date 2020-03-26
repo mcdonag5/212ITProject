@@ -12,7 +12,7 @@ namespace ContactManager7938977
     public class DbConn
     {
         //Database Credentials//
-        private string conString = "Server=db212it.czz7ucpwdopn.us-east-1.rds.amazonaws.com;User ID=admin;Password=mastersword;Database=HarrisContactDB";
+        private string conString = "Server=db212it.czz7ucpwdopn.us-east-1.rds.amazonaws.com;User ID=admin;Password=mastersword;Database=HarrisContactDb";
 
 
         //Personal Contacts//

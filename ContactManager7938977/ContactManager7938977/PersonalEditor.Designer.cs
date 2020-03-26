@@ -70,54 +70,59 @@
             this.dgv_PersonalRecords.Name = "dgv_PersonalRecords";
             this.dgv_PersonalRecords.ReadOnly = true;
             this.dgv_PersonalRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_PersonalRecords.Size = new System.Drawing.Size(776, 289);
+            this.dgv_PersonalRecords.Size = new System.Drawing.Size(1102, 388);
             this.dgv_PersonalRecords.TabIndex = 0;
+            this.dgv_PersonalRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PersonalRecords_CellClick);
             // 
             // btn_Refresh
             // 
             this.btn_Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Refresh.Location = new System.Drawing.Point(713, 106);
+            this.btn_Refresh.Location = new System.Drawing.Point(1039, 106);
             this.btn_Refresh.Name = "btn_Refresh";
             this.btn_Refresh.Size = new System.Drawing.Size(75, 23);
             this.btn_Refresh.TabIndex = 1;
             this.btn_Refresh.Text = "Refresh";
             this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // btn_AddNew
             // 
             this.btn_AddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_AddNew.Location = new System.Drawing.Point(713, 5);
+            this.btn_AddNew.Location = new System.Drawing.Point(1039, 5);
             this.btn_AddNew.Name = "btn_AddNew";
             this.btn_AddNew.Size = new System.Drawing.Size(75, 23);
             this.btn_AddNew.TabIndex = 2;
             this.btn_AddNew.Text = "Add New";
             this.btn_AddNew.UseVisualStyleBackColor = true;
+            this.btn_AddNew.Click += new System.EventHandler(this.btn_AddNew_Click);
             // 
             // btn_SaveNew
             // 
             this.btn_SaveNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SaveNew.Enabled = false;
-            this.btn_SaveNew.Location = new System.Drawing.Point(713, 34);
+            this.btn_SaveNew.Location = new System.Drawing.Point(1039, 34);
             this.btn_SaveNew.Name = "btn_SaveNew";
             this.btn_SaveNew.Size = new System.Drawing.Size(75, 23);
             this.btn_SaveNew.TabIndex = 3;
             this.btn_SaveNew.Text = "Save New";
             this.btn_SaveNew.UseVisualStyleBackColor = true;
+            this.btn_SaveNew.Click += new System.EventHandler(this.btn_SaveNew_Click);
             // 
             // btn_UpdateSelected
             // 
             this.btn_UpdateSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_UpdateSelected.Location = new System.Drawing.Point(608, 5);
+            this.btn_UpdateSelected.Location = new System.Drawing.Point(934, 5);
             this.btn_UpdateSelected.Name = "btn_UpdateSelected";
             this.btn_UpdateSelected.Size = new System.Drawing.Size(99, 23);
             this.btn_UpdateSelected.TabIndex = 4;
             this.btn_UpdateSelected.Text = "Update Selected";
             this.btn_UpdateSelected.UseVisualStyleBackColor = true;
+            this.btn_UpdateSelected.Click += new System.EventHandler(this.btn_UpdateSelected_Click);
             // 
             // btn_DeleteSelected
             // 
             this.btn_DeleteSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_DeleteSelected.Location = new System.Drawing.Point(608, 61);
+            this.btn_DeleteSelected.Location = new System.Drawing.Point(934, 61);
             this.btn_DeleteSelected.Name = "btn_DeleteSelected";
             this.btn_DeleteSelected.Size = new System.Drawing.Size(99, 23);
             this.btn_DeleteSelected.TabIndex = 5;
@@ -128,12 +133,13 @@
             // 
             this.btn_SaveSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SaveSelected.Enabled = false;
-            this.btn_SaveSelected.Location = new System.Drawing.Point(608, 32);
+            this.btn_SaveSelected.Location = new System.Drawing.Point(934, 32);
             this.btn_SaveSelected.Name = "btn_SaveSelected";
             this.btn_SaveSelected.Size = new System.Drawing.Size(99, 23);
             this.btn_SaveSelected.TabIndex = 6;
             this.btn_SaveSelected.Text = "Save Selected";
             this.btn_SaveSelected.UseVisualStyleBackColor = true;
+            this.btn_SaveSelected.Click += new System.EventHandler(this.btn_SaveSelected_Click);
             // 
             // tb_Fname
             // 
@@ -364,7 +370,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1126, 549);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btn_SaveSelected);
             this.Controls.Add(this.btn_DeleteSelected);
@@ -376,6 +382,7 @@
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "PersonalEditor";
             this.Text = "PersonalEditor";
+            this.Load += new System.EventHandler(this.PersonalEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalRecords)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
