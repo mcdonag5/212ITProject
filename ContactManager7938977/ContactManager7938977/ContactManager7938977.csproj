@@ -75,6 +75,7 @@
     <Compile Include="ContactMenu.Designer.cs">
       <DependentUpon>ContactMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbConn.cs" />
     <Compile Include="PersonalContact.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
