@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace ContactManager7938977
 {
-    public partial class ContactMenu : Form
+    public partial class PersonalEditor : Form
     {
-        public ContactMenu()
+        public PersonalEditor()
         {
             InitializeComponent();
-        }
-
-        private void btn_Personal_Click(object sender, EventArgs e)
-        {
-            PersonalEditor personalEditor = new PersonalEditor();
-            personalEditor.Show();
         }
     }
 }
