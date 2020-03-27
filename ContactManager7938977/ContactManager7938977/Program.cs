@@ -16,7 +16,7 @@ namespace ContactManager7938977
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ContactMenu());
+            Application.Run(new ContactEditor());
         }
     }
 }

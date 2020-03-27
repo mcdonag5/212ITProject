@@ -1,6 +1,6 @@
 ﻿namespace ContactManager7938977
 {
-    partial class PersonalEditor
+    partial class ContactEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv_PersonalRecords = new System.Windows.Forms.DataGridView();
+            this.dgv_ContactRecords = new System.Windows.Forms.DataGridView();
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.btn_AddNew = new System.Windows.Forms.Button();
             this.btn_SaveNew = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             this.lbl_Fname = new System.Windows.Forms.Label();
             this.lbl_Lname = new System.Windows.Forms.Label();
             this.lbl_Tel = new System.Windows.Forms.Label();
-            this.lbl_HomeTel = new System.Windows.Forms.Label();
+            this.lbl_OtherTel = new System.Windows.Forms.Label();
             this.lblPostcode = new System.Windows.Forms.Label();
             this.lbl_City = new System.Windows.Forms.Label();
             this.lbl_Addr2 = new System.Windows.Forms.Label();
@@ -54,25 +54,26 @@
             this.lbl_Email = new System.Windows.Forms.Label();
             this.tb_Email = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalRecords)).BeginInit();
+            this.btn_ChangeContact = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ContactRecords)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgv_PersonalRecords
+            // dgv_ContactRecords
             // 
-            this.dgv_PersonalRecords.AllowUserToResizeColumns = false;
-            this.dgv_PersonalRecords.AllowUserToResizeRows = false;
-            this.dgv_PersonalRecords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgv_ContactRecords.AllowUserToResizeColumns = false;
+            this.dgv_ContactRecords.AllowUserToResizeRows = false;
+            this.dgv_ContactRecords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_PersonalRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_PersonalRecords.Location = new System.Drawing.Point(12, 149);
-            this.dgv_PersonalRecords.Name = "dgv_PersonalRecords";
-            this.dgv_PersonalRecords.ReadOnly = true;
-            this.dgv_PersonalRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_PersonalRecords.Size = new System.Drawing.Size(1102, 388);
-            this.dgv_PersonalRecords.TabIndex = 0;
-            this.dgv_PersonalRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PersonalRecords_CellClick);
+            this.dgv_ContactRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ContactRecords.Location = new System.Drawing.Point(12, 149);
+            this.dgv_ContactRecords.Name = "dgv_ContactRecords";
+            this.dgv_ContactRecords.ReadOnly = true;
+            this.dgv_ContactRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_ContactRecords.Size = new System.Drawing.Size(1102, 388);
+            this.dgv_ContactRecords.TabIndex = 0;
+            this.dgv_ContactRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PersonalRecords_CellClick);
             // 
             // btn_Refresh
             // 
@@ -245,18 +246,18 @@
             this.lbl_Tel.Text = "Telephone";
             this.lbl_Tel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lbl_HomeTel
+            // lbl_OtherTel
             // 
-            this.lbl_HomeTel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lbl_OtherTel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_HomeTel.AutoSize = true;
-            this.lbl_HomeTel.Location = new System.Drawing.Point(3, 78);
-            this.lbl_HomeTel.Name = "lbl_HomeTel";
-            this.lbl_HomeTel.Size = new System.Drawing.Size(89, 26);
-            this.lbl_HomeTel.TabIndex = 18;
-            this.lbl_HomeTel.Text = "Home Telephone";
-            this.lbl_HomeTel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_OtherTel.AutoSize = true;
+            this.lbl_OtherTel.Location = new System.Drawing.Point(3, 78);
+            this.lbl_OtherTel.Name = "lbl_OtherTel";
+            this.lbl_OtherTel.Size = new System.Drawing.Size(89, 26);
+            this.lbl_OtherTel.TabIndex = 18;
+            this.lbl_OtherTel.Text = "Home Telephone";
+            this.lbl_OtherTel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblPostcode
             // 
@@ -355,7 +356,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lbl_Tel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tb_Lname, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbl_Addr1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_HomeTel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_OtherTel, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -367,11 +368,23 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 131);
             this.tableLayoutPanel1.TabIndex = 25;
             // 
-            // PersonalEditor
+            // btn_ChangeContact
+            // 
+            this.btn_ChangeContact.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ChangeContact.Location = new System.Drawing.Point(934, 93);
+            this.btn_ChangeContact.Name = "btn_ChangeContact";
+            this.btn_ChangeContact.Size = new System.Drawing.Size(99, 41);
+            this.btn_ChangeContact.TabIndex = 26;
+            this.btn_ChangeContact.Text = "Business Contacts";
+            this.btn_ChangeContact.UseVisualStyleBackColor = true;
+            this.btn_ChangeContact.Click += new System.EventHandler(this.btn_ChangeContact_Click);
+            // 
+            // ContactEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1126, 549);
+            this.Controls.Add(this.btn_ChangeContact);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btn_SaveSelected);
             this.Controls.Add(this.btn_DeleteSelected);
@@ -379,12 +392,12 @@
             this.Controls.Add(this.btn_SaveNew);
             this.Controls.Add(this.btn_AddNew);
             this.Controls.Add(this.btn_Refresh);
-            this.Controls.Add(this.dgv_PersonalRecords);
+            this.Controls.Add(this.dgv_ContactRecords);
             this.MinimumSize = new System.Drawing.Size(816, 489);
-            this.Name = "PersonalEditor";
-            this.Text = "PersonalEditor";
+            this.Name = "ContactEditor";
+            this.Text = "Harris Contact Manager - Personal ";
             this.Load += new System.EventHandler(this.PersonalEditor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalRecords)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ContactRecords)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -393,7 +406,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgv_PersonalRecords;
+        private System.Windows.Forms.DataGridView dgv_ContactRecords;
         private System.Windows.Forms.Button btn_Refresh;
         private System.Windows.Forms.Button btn_AddNew;
         private System.Windows.Forms.Button btn_SaveNew;
@@ -411,7 +424,7 @@
         private System.Windows.Forms.Label lbl_Fname;
         private System.Windows.Forms.Label lbl_Lname;
         private System.Windows.Forms.Label lbl_Tel;
-        private System.Windows.Forms.Label lbl_HomeTel;
+        private System.Windows.Forms.Label lbl_OtherTel;
         private System.Windows.Forms.Label lblPostcode;
         private System.Windows.Forms.Label lbl_City;
         private System.Windows.Forms.Label lbl_Addr2;
@@ -419,5 +432,6 @@
         private System.Windows.Forms.Label lbl_Email;
         private System.Windows.Forms.TextBox tb_Email;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btn_ChangeContact;
     }
 }
