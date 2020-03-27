@@ -75,11 +75,11 @@ namespace ContactManager7938977
         }
 
         //Insert a personal contact to the database
-        public void InsertPersonal(PersonalContact personalContact)
+        public async void InsertPersonal(PersonalContact personalContact)
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();//opens the connection to the database
+                await conn.OpenAsync();//opens the connection to the database
                 using (var cmd = new MySqlCommand())
                 {//created a command to execute
                     cmd.Connection = conn;
@@ -93,17 +93,17 @@ namespace ContactManager7938977
                     cmd.Parameters.AddWithValue("p7", personalContact.ContactAddr2);
                     cmd.Parameters.AddWithValue("p8", personalContact.ContactCity);
                     cmd.Parameters.AddWithValue("p9", personalContact.ContactPostcode);
-                    cmd.ExecuteNonQuery(); //executing the command after creating it
+                    await cmd.ExecuteNonQueryAsync(); //executing the command after creating it
                 }
             }
         }
 
         //Updates personal contact in the database
-        public void UpdatePersonal(PersonalContact personalContact)
+        public async void UpdatePersonal(PersonalContact personalContact)
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();//opens the connection to the database
+                await conn.OpenAsync();//opens the connection to the database
                 using (var cmd = new MySqlCommand())
                 {//created a command to execute
                     cmd.Connection = conn;
@@ -118,23 +118,23 @@ namespace ContactManager7938977
                     cmd.Parameters.AddWithValue("p8", personalContact.ContactAddr2);
                     cmd.Parameters.AddWithValue("p9", personalContact.ContactCity);
                     cmd.Parameters.AddWithValue("p10", personalContact.ContactPostcode);
-                    cmd.ExecuteNonQuery();//executing the command after creating it
+                    await cmd.ExecuteNonQueryAsync();//executing the command after creating it
                 }
             }
         }
 
         //Deletes a personal contact in the database
-        public void DeletePersonal(int id)
+        public async void DeletePersonal(int id)
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();//opens the connection to the database
+                await conn.OpenAsync();//opens the connection to the database
                 using (var cmd = new MySqlCommand())
                 {//created a command to execute
                     cmd.Connection = conn;
                     cmd.CommandText = "CALL DeletePersonal(@p1)";//Calling the insert and setting the parameters location
                     cmd.Parameters.AddWithValue("p1", id);//id of the contact to delete
-                    cmd.ExecuteNonQuery();//executing the command after creating it
+                    await cmd.ExecuteNonQueryAsync();//executing the command after creating it
                 }
             }
         }
@@ -200,11 +200,11 @@ namespace ContactManager7938977
         }
 
         //Insert a business contact to the database
-        public void InsertBusiness(BusinessContact businessContact)
+        public async void InsertBusiness(BusinessContact businessContact)
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -218,17 +218,17 @@ namespace ContactManager7938977
                     cmd.Parameters.AddWithValue("p7", businessContact.ContactAddr2);
                     cmd.Parameters.AddWithValue("p8", businessContact.ContactCity);
                     cmd.Parameters.AddWithValue("p9", businessContact.ContactPostcode);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
         //Updates business contact in the database
-        public void UpdateBusiness(BusinessContact businessContact)
+        public async void UpdateBusiness(BusinessContact businessContact)
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -243,23 +243,23 @@ namespace ContactManager7938977
                     cmd.Parameters.AddWithValue("p8", businessContact.ContactAddr2);
                     cmd.Parameters.AddWithValue("p9", businessContact.ContactCity);
                     cmd.Parameters.AddWithValue("p10", businessContact.ContactPostcode);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
         //Deletes a business contact in the database
-        public void DeleteBusiness(int id)
+        public async void DeleteBusiness(int id)
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
                     cmd.CommandText = "CALL DeleteBusiness(@p1)";
                     cmd.Parameters.AddWithValue("p1", id);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }

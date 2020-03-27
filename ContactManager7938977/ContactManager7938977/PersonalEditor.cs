@@ -18,6 +18,10 @@ namespace ContactManager7938977
         public int contactId = 0;
 
         ///// METHODS START ////////////////////////////////////////////////////////
+        public string DataGrid (int column)
+        {
+            return dgv_PersonalRecords.SelectedCells[column].Value.ToString();
+        } 
         public void RefreshRecords()
         {
             dgv_PersonalRecords.DataSource = dbConn.GetAllPersonal();
@@ -36,15 +40,15 @@ namespace ContactManager7938977
         public void SetTextboxText ()
         {
             contactId = Int32.Parse(dgv_PersonalRecords.SelectedCells[0].Value.ToString());
-            tb_Fname.Text = dgv_PersonalRecords.SelectedCells[1].Value.ToString();
-            tb_Lname.Text = dgv_PersonalRecords.SelectedCells[2].Value.ToString(); 
-            tb_Tel.Text = dgv_PersonalRecords.SelectedCells[3].Value.ToString();
-            tb_HomeTel.Text = dgv_PersonalRecords.SelectedCells[4].Value.ToString();
-            tb_Email.Text = dgv_PersonalRecords.SelectedCells[5].Value.ToString();
-            tb_Addr1.Text = dgv_PersonalRecords.SelectedCells[6].Value.ToString();
-            tb_Addr2.Text = dgv_PersonalRecords.SelectedCells[7].Value.ToString();
-            tb_City.Text = dgv_PersonalRecords.SelectedCells[8].Value.ToString();
-            tb_Postcode.Text = dgv_PersonalRecords.SelectedCells[9].Value.ToString();
+            tb_Fname.Text = DataGrid(1);
+            tb_Lname.Text = DataGrid(2);
+            tb_Tel.Text = DataGrid(3);
+            tb_HomeTel.Text = DataGrid(4);
+            tb_Email.Text = DataGrid(5);
+            tb_Addr1.Text = DataGrid(6);
+            tb_Addr2.Text = DataGrid(7);
+            tb_City.Text = DataGrid(8);
+            tb_Postcode.Text = DataGrid(9);
         }
 
         public PersonalContact CreatePersonalContactFromForm()
@@ -108,6 +112,25 @@ namespace ContactManager7938977
             TextboxEnabled(false);
         }
 
+        //delete
+        private void btn_DeleteSelected_Click(object sender, EventArgs e)
+        {
+            string contactName = DataGrid(2)+" "+ DataGrid(3);
+            string message = "Are you sure you want to delete?";
+            string caption = "Do you want to delete the contact " + contactName + "?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+            result = MessageBox.Show(caption, message, buttons);
+            if(result == DialogResult.Yes)
+            {
+                dbConn.DeletePersonal(Int32.Parse(DataGrid(0)));
+
+                RefreshRecords();
+            }
+
+        }
+
+
         //Refresh
         private void btn_Refresh_Click(object sender, EventArgs e) => RefreshRecords();
 
@@ -116,6 +139,7 @@ namespace ContactManager7938977
         {
 
         }
+
 
 
 

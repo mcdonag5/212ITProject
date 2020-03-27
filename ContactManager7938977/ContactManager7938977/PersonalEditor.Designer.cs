@@ -128,6 +128,7 @@
             this.btn_DeleteSelected.TabIndex = 5;
             this.btn_DeleteSelected.Text = "Delete Selected";
             this.btn_DeleteSelected.UseVisualStyleBackColor = true;
+            this.btn_DeleteSelected.Click += new System.EventHandler(this.btn_DeleteSelected_Click);
             // 
             // btn_SaveSelected
             // 
