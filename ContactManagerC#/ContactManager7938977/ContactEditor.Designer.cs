@@ -61,6 +61,7 @@
             // 
             // dgv_ContactRecords
             // 
+            this.dgv_ContactRecords.AllowUserToAddRows = false;
             this.dgv_ContactRecords.AllowUserToResizeColumns = false;
             this.dgv_ContactRecords.AllowUserToResizeRows = false;
             this.dgv_ContactRecords.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
