@@ -38,6 +38,8 @@ public class ContactManagerWindow {
 	
 	private String contactView = "Personal";
 	private int selectedId;
+	
+	DbConn d = new DbConn();
 
 	/**
 	 * Launch the application.
@@ -66,7 +68,7 @@ public class ContactManagerWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		DbConn d = new DbConn();
+		
 		
 		frmHarrisContactManager = new JFrame();
 		frmHarrisContactManager.setTitle("Harris Contact Manager - Personal");
@@ -83,7 +85,7 @@ public class ContactManagerWindow {
 			}
 		});
 		scrollPane.setViewportView(tbContact);
-		tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+		RefreshTable();
 		
 		tfFName = new JTextField();
 		tfFName.setEnabled(false);
@@ -174,14 +176,7 @@ public class ContactManagerWindow {
 		btnRefresh.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				switch(contactView) {
-				case "Personal":
-					tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
-					break;
-				case "Business":
-					tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllBusiness()));
-					break;
-				}
+				RefreshTable();
 			}
 		});
 		
@@ -196,6 +191,21 @@ public class ContactManagerWindow {
 		});
 		
 		btnSaveNew = new JButton("Save New");
+		btnSaveNew.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				switch(contactView) {
+				case "Personal":
+					d.InsertPersonal(CreatePersonalContact());
+					break;
+				case "Business":
+					d.InsertBusiness(CreateBusinessContact());
+					break;
+				}
+				EnableTextboxes(false);
+				RefreshTable();
+			}
+		});
 		btnSaveNew.setEnabled(false);
 		
 		btnUpdateSelected = new JButton("Update Selected");
@@ -210,9 +220,39 @@ public class ContactManagerWindow {
 		});
 		
 		btnSaveSelected = new JButton("Save Selected");
+		btnSaveSelected.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				switch(contactView) {
+				case "Personal":
+					d.UpdatePersonal(CreatePersonalContact());
+					break;
+				case "Business":
+					d.UpdateBusiness(CreateBusinessContact());
+					break;
+				}
+				EnableTextboxes(false);
+				RefreshTable();
+			}
+		});
 		btnSaveSelected.setEnabled(false);
 		
 		btnDeleteSelected = new JButton("Delete Selected");
+		btnDeleteSelected.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				switch(contactView) {
+				case "Personal":
+					d.DeletePersonal(selectedId);
+					break;
+				case "Business":
+					d.DeleteBusiness(selectedId);
+					break;
+				}
+				EnableTextboxes(false);
+				RefreshTable();
+			}
+		});
 		
 		GroupLayout groupLayout = new GroupLayout(frmHarrisContactManager.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -355,6 +395,17 @@ public class ContactManagerWindow {
 		
 	}
 	
+	public void RefreshTable() {
+		switch(contactView) {
+		case "Personal":
+			tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+			break;
+		case "Business":
+			tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllBusiness()));
+			break;
+		}
+	}
+	
 	public void EnableTextboxes (Boolean enabled) {
 		tfFName.setEnabled(enabled);
 		tfLName.setEnabled(enabled);
@@ -393,5 +444,35 @@ public class ContactManagerWindow {
 		tfAddr2.setText(tbContact.getValueAt(tbContact.getSelectedRow(), 7).toString());
 		tfCity.setText(tbContact.getValueAt(tbContact.getSelectedRow(), 8).toString());
 		tfPostcode.setText(tbContact.getValueAt(tbContact.getSelectedRow(), 9).toString());
+	}
+	
+	public PersonalContact CreatePersonalContact() {
+		PersonalContact contact = new PersonalContact();
+		contact.ContactID = selectedId;
+		contact.ContactFname = tfFName.getText();
+		contact.ContactLname = tfLName.getText();
+		contact.ContactTel = tfTele.getText();
+		contact.PersonalTel = tfOtherTel.getText();
+		contact.ContactEmail = tfEmail.getText();
+		contact.ContactAddr1 = tfAddr1.getText();
+		contact.ContactAddr2 = tfAddr2.getText();
+		contact.ContactCity = tfCity.getText();
+		contact.ContactPostcode = tfPostcode.getText();
+		return contact;
+	}
+	
+	public BusinessContact CreateBusinessContact() {
+		BusinessContact contact = new BusinessContact();
+		contact.ContactID = selectedId;
+		contact.ContactFname = tfFName.getText();
+		contact.ContactLname = tfLName.getText();
+		contact.ContactTel = tfTele.getText();
+		contact.BusinessTel = tfOtherTel.getText();
+		contact.ContactEmail = tfEmail.getText();
+		contact.ContactAddr1 = tfAddr1.getText();
+		contact.ContactAddr2 = tfAddr2.getText();
+		contact.ContactCity = tfCity.getText();
+		contact.ContactPostcode = tfPostcode.getText();
+		return contact;
 	}
 }
