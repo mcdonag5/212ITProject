@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class DbConn {
 	//Connection information to connect to database//
-	private String connString = "db212it.czz7ucpwdopn.us-east-1.rds.amazonaws.com/HarrisContactDB";
+	private String connString = "jdbc:mysql://db212it.czz7ucpwdopn.us-east-1.rds.amazonaws.com/HarrisContactDb";
 	private String username = "admin";
 	private String password = "mastersword";
 	private Connection con = null;
@@ -24,13 +24,29 @@ public class DbConn {
 	//Get all personal records
 	public ResultSet GetAllPersonal() {
 		ResultSet rs = null;
-		String sql = "{call selectAllPersonal();}";//Command to set to database
+		String sql = "{call selectAllPersonal()}";//Command to set to database
 		try {
 			CallableStatement cst = con.prepareCall(sql);
+			rs = cst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rs;
 	}
+	
+	//Business table//
+		//Get all business records
+		public ResultSet GetAllBusiness() {
+			ResultSet rs = null;
+			String sql = "{call selectAllBusiness()}";//Command to set to database
+			try {
+				CallableStatement cst = con.prepareCall(sql);
+				rs = cst.executeQuery();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return rs;
+		}
 }

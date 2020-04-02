@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import net.proteanit.sql.DbUtils;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -23,6 +26,8 @@ public class ContactManagerWindow {
 	private JTextField tfAddr1;
 	private JTextField tfAddr2;
 	private JTextField tfPostcode;
+	
+	private String contactView = "Personal";
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,7 @@ public class ContactManagerWindow {
 		DbConn d = new DbConn();
 		
 		frmHarrisContactManager = new JFrame();
-		frmHarrisContactManager.setTitle("Harris Contact Manager");
+		frmHarrisContactManager.setTitle("Harris Contact Manager - Personal");
 		frmHarrisContactManager.setBounds(100, 100, 849, 545);
 		frmHarrisContactManager.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHarrisContactManager.getContentPane().setLayout(null);
@@ -65,6 +70,7 @@ public class ContactManagerWindow {
 		
 		tbContact = new JTable();
 		scrollPane.setViewportView(tbContact);
+		tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
 		
 		tfFName = new JTextField();
 		tfFName.setBounds(65, 11, 124, 20);
@@ -91,10 +97,10 @@ public class ContactManagerWindow {
 		tfOtherTel.setBounds(283, 42, 124, 20);
 		frmHarrisContactManager.getContentPane().add(tfOtherTel);
 		
-		JLabel lblHomeTelephone = new JLabel("Home Telephone");
-		lblHomeTelephone.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblHomeTelephone.setBounds(199, 45, 80, 14);
-		frmHarrisContactManager.getContentPane().add(lblHomeTelephone);
+		JLabel lblOtherTelephone = new JLabel("Home Telephone");
+		lblOtherTelephone.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblOtherTelephone.setBounds(199, 45, 80, 14);
+		frmHarrisContactManager.getContentPane().add(lblOtherTelephone);
 		
 		JLabel lblTelephone = new JLabel("Telephone");
 		lblTelephone.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -157,6 +163,25 @@ public class ContactManagerWindow {
 		frmHarrisContactManager.getContentPane().add(tfPostcode);
 		
 		JButton btnChangeView = new JButton("Business Contacts");
+		btnChangeView.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnChangeView.setText(contactView+" Contacts");
+				switch(contactView) {
+				case "Personal":
+					lblOtherTelephone.setText("Work Telephone");
+					tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllBusiness()));
+					contactView = "Business";
+					break;
+				case "Business":
+					lblOtherTelephone.setText("Home Telephone");
+					tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+					contactView = "Personal";
+					break;
+				}
+				frmHarrisContactManager.setTitle("Harris Contact Manager - "+contactView); 
+			}
+		});
 		btnChangeView.setBounds(6, 73, 183, 23);
 		frmHarrisContactManager.getContentPane().add(btnChangeView);
 		
@@ -164,7 +189,14 @@ public class ContactManagerWindow {
 		btnRefresh.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				tbContact.setModel(d.GetAllPersonal());
+				switch(contactView) {
+				case "Personal":
+					tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+					break;
+				case "Business":
+					tbContact.setModel(DbUtils.resultSetToTableModel(d.GetAllBusiness()));
+					break;
+				}
 			}
 		});
 		btnRefresh.setBounds(640, 36, 89, 23);
