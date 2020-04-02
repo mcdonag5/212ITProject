@@ -22,6 +22,7 @@ namespace ContactManager7938977
         //Changes the form view between personal and business
         public void ChangeFormView()
         {
+            TextboxEnabled(false);
             btn_ChangeContact.Text = formView + " Contact"; //changes the text of the buttom
             switch(formView)//changes form view so the app knows which type of class to use
             {
