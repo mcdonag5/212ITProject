@@ -7,11 +7,13 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ContactManagerWindow {
 
 	private JFrame frmHarrisContactManager;
-	private JTable table;
+	private JTable tbContact;
 	private JTextField tfFName;
 	private JTextField tfLName;
 	private JTextField tfOtherTel;
@@ -49,6 +51,8 @@ public class ContactManagerWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		DbConn d = new DbConn();
+		
 		frmHarrisContactManager = new JFrame();
 		frmHarrisContactManager.setTitle("Harris Contact Manager");
 		frmHarrisContactManager.setBounds(100, 100, 849, 545);
@@ -59,8 +63,8 @@ public class ContactManagerWindow {
 		scrollPane.setBounds(0, 101, 833, 405);
 		frmHarrisContactManager.getContentPane().add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		tbContact = new JTable();
+		scrollPane.setViewportView(tbContact);
 		
 		tfFName = new JTextField();
 		tfFName.setBounds(65, 11, 124, 20);
@@ -157,7 +161,15 @@ public class ContactManagerWindow {
 		frmHarrisContactManager.getContentPane().add(btnChangeView);
 		
 		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tbContact.setModel(d.GetAllPersonal());
+			}
+		});
 		btnRefresh.setBounds(640, 36, 89, 23);
 		frmHarrisContactManager.getContentPane().add(btnRefresh);
+		
+		
 	}
 }
